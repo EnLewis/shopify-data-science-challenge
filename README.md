@@ -5,7 +5,7 @@ Within lies my answers to the Shopify Data Science Challenge.
 The answer to question one consists of a [Jupyter notebook](question1.ipynb) with a series of annotations. The provided dataset for this question is uploaded and renamed here as `data_sneakers.csv`. Please run the notebook and read the annotations to get the answers.
 
 ### Question 2
-The answers and queries for question 2 are in the text file [here](question2.txt) and are listed below Queries can be tested at at [this link](https://www.w3schools.com/SQL/TRYSQL.ASP?FILENAME=TRYSQL_SELECT_ALL). Note that these queries are not the most optimised. They use `GROUP BY` where I might not have to, since I'm a little rusty with SQL. So I tried to write the queries to be more legible than they are optimised.
+The answers and queries for question 2 are in the text file [here](question2.txt) and are listed below Queries can be tested at at [this link](https://www.w3schools.com/SQL/TRYSQL.ASP?FILENAME=TRYSQL_SELECT_ALL). Note that these queries are not the most optimised. They use `GROUP BY` where I might not have to since I'm a little rusty with SQL. So I tried to write the queries to be more legible than they are optimised.
 
 #### Q1.1
 ```MySQL
