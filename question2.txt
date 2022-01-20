@@ -1,6 +1,6 @@
 1. How many orders were shipped by Speedy Express in total?
 Query:
-SELECT COUNT(Shippers.ShipperID) 
+SELECT COUNT(Orders.ShipperID) 
 FROM Shippers
 INNER JOIN Orders ON Orders.ShipperID = Shippers.ShipperID
 WHERE Shippers.ShipperName = "Speedy Express"
