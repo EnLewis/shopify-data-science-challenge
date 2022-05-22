@@ -3,11 +3,11 @@
 # Shopify Data Science Challenge Fall 2022
 
 ### Question 1
-- Q1.a) **Think about what could be going wrong with our calculation. Think about a better way to evaluate this data.**<br>
+- Q1.a) **Think about what could be going wrong with our calculation. Think about a better way to evaluate this data.**<p>
        - At first glance, I imagine that some high-end outliers in our dataset are skewing the AOV.<br>
-- Q1.b) **What metric would you report for this dataset?**<br>
+- Q1.b) **What metric would you report for this dataset?**<p>
        - In that case the mean should work a lot better for us in approximating AOV.<br>
-- Q1.c)**What is its value?**<br>
+- Q1.c)**What is its value?**<p>
        - The mean order amount is 284.00<br>
 
 The detailed reasoning behind my answers to question 1 consists can be found in a [Jupyter notebook](question1.ipynb) with a series of annotations. The provided dataset for this question is uploaded and renamed here as `data_sneakers.csv`. Please run the notebook and read the annotations to get the answers.
