@@ -1,37 +1,45 @@
 1. How many orders were shipped by Speedy Express in total?
 Query:
-SELECT COUNT(Orders.ShipperID) 
-FROM Shippers
-INNER JOIN Orders ON Orders.ShipperID = Shippers.ShipperID
-WHERE Shippers.ShipperName = "Speedy Express"
+SELECT Count(*) as OrderCount
+FROM   Shippers as shp
+       INNER JOIN Orders O
+               ON shp.ShipperID = O.ShipperID
+WHERE  shp.ShipperName = "Speedy Express" 
 
 Answer:
 54
 
 2. What is the last name of the employee with the most orders?
 Query:
-SELECT Employees.LastName
-FROM Orders
-INNER JOIN Employees ON Employees.EmployeeID = Orders.EmployeeID
-GROUP BY Orders.EmployeeID
-ORDER BY COUNT(Orders.EmployeeID) DESC LIMIT  1
+SELECT EmployeeOfTheMonth
+FROM   (SELECT emp.LastName as EmployeeOfTheMonth,Max(count) as TopNumberSales
+        FROM   Employees as emp
+               JOIN (SELECT Ord.EmployeeID as empID,Count(Ord.EmployeeID) as
+                                                    count
+                     FROM   Orders Ord
+                     GROUP  BY empID)
+                 ON empID = emp.EmployeeID) 
 
 Answer:
 Peacock
 
 3. What product was ordered the most by customers in Germany
 
-SELECT Products.ProductName as pname
-FROM  Products
-INNER JOIN Customers ON Customers.CustomerID = Orders.CustomerID
-INNER JOIN Orders ON OrderDetails.OrderID = Orders.OrderID
-INNER JOIN OrderDetails ON Products.ProductID = OrderDetails.ProductID
-WHERE Customers.country = "Germany"
-GROUP BY pname
-ORDER BY COUNT(Products.ProductName) DESC LIMIT 1
+SELECT ProductName as GermaniesFavouriteProduct
+FROM   (SELECT ProductName,Max(total_quant) AS TotalOrderQuantity
+        FROM   (SELECT Products.ProductName,Sum(Quantity) AS total_quant
+                FROM   Products
+                       INNER JOIN Customers
+                               ON Customers.CustomerID = Orders.CustomerID
+                       INNER JOIN Orders
+                               ON OrderDetails.OrderID = Orders.OrderID
+                       INNER JOIN OrderDetails
+                               ON Products.ProductID = OrderDetails.ProductID
+                WHERE  Customers.country = "Germany"
+                GROUP  BY Products.ProductID)) 
 
 Answer:
-Gorgonzola Telino
+Boston Crab Meat
 
 
 
