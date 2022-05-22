@@ -1,10 +1,10 @@
 1. How many orders were shipped by Speedy Express in total?
 Query:
-SELECT Count(*) as OrderCount
+SELECT Count(*) as SpeedyExpress_OrderCount
 FROM   Shippers as shp
        INNER JOIN Orders O
                ON shp.ShipperID = O.ShipperID
-WHERE  shp.ShipperName = "Speedy Express" 
+WHERE  shp.ShipperName = "Speedy Express"
 
 Answer:
 54
@@ -12,22 +12,21 @@ Answer:
 2. What is the last name of the employee with the most orders?
 Query:
 SELECT EmployeeOfTheMonth
-FROM   (SELECT emp.LastName as EmployeeOfTheMonth,Max(count) as TopNumberSales
-        FROM   Employees as emp
-               JOIN (SELECT Ord.EmployeeID as empID,Count(Ord.EmployeeID) as
-                                                    count
-                     FROM   Orders Ord
-                     GROUP  BY empID)
-                 ON empID = emp.EmployeeID) 
+FROM   (SELECT LastName as EmployeeOfTheMonth, Max(count) as TopNumberSales
+        FROM   (SELECT Employees.LastName, Count(Orders.EmployeeID) as count
+                FROM   Orders
+                       JOIN Employees
+                         ON Employees.EmployeeID = Orders.EmployeeID
+                GROUP  BY Orders.EmployeeID))  
 
 Answer:
 Peacock
 
 3. What product was ordered the most by customers in Germany
 
-SELECT ProductName as GermaniesFavouriteProduct
-FROM   (SELECT ProductName,Max(total_quant) AS TotalOrderQuantity
-        FROM   (SELECT Products.ProductName,Sum(Quantity) AS total_quant
+SELECT ProductName as GermanysFavouriteProduct
+FROM   (SELECT ProductName, Max(total_quant) AS TotalProductQuantity
+        FROM   (SELECT Products.ProductName, Sum(Quantity) AS total_quant
                 FROM   Products
                        INNER JOIN Customers
                                ON Customers.CustomerID = Orders.CustomerID
@@ -40,15 +39,3 @@ FROM   (SELECT ProductName,Max(total_quant) AS TotalOrderQuantity
 
 Answer:
 Boston Crab Meat
-
-
-
-
-
-
-
-
-
-
-
-
