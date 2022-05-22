@@ -1,7 +1,13 @@
 # Shopify Data Science Challenge Fall 2022
 
 ### Question 1
-The answer to question one consists of a [Jupyter notebook](question1.ipynb) with a series of annotations. The provided dataset for this question is uploaded and renamed here as `data_sneakers.csv`. Please run the notebook and read the annotations to get the answers.
+Q1.a)<br>
+At first glance, I imagine that some high-end outliers in our dataset are skewing the AOV.<br>
+Q1.b)<br>
+In that case the mean should work a lot better for us in approximating AOV.<br>
+Q1.c)<br>
+The mean order amount is 284.00<br>
+The detailed reasoning behind my answers to question 1 consists can be found in a [Jupyter notebook](question1.ipynb) with a series of annotations. The provided dataset for this question is uploaded and renamed here as `data_sneakers.csv`. Please run the notebook and read the annotations to get the answers.
 
 ### Question 2
 The answers and queries for question 2 are in the text file [here](question2.txt) and are listed below Queries can be tested at at [this link](https://www.w3schools.com/SQL/TRYSQL.ASP?FILENAME=TRYSQL_SELECT_ALL). I have made the assumption that whatever SQL engine I'm using optimizes better with JOIN rather than sub-queries. With that assumption, I've opted to minimize sub-queries except for at the end for selecting a final answer.
