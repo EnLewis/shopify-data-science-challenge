@@ -4,10 +4,10 @@
        - At first glance, I imagine that some high-end outliers in our dataset are skewing the AOV.<br>
 - Q1.b) **What metric would you report for this dataset?**<p>
        - In that case the mean should work a lot better for us in approximating AOV.<br>
-- Q1.c)**What is its value?**<p>
+- Q1.c) **What is its value?**<p>
        - The mean order amount is 284.00<br>
 
-The detailed reasoning behind my answers to question 1 consists can be found in a [Jupyter notebook](question1.ipynb) with a series of annotations. The provided dataset for this question is uploaded and renamed here as `data_sneakers.csv`. Please run the notebook and read the annotations to get the answers.
+The detailed reasoning behind my answers to question 1 can be found in a [Jupyter notebook](question1.ipynb) with a series of annotations. The provided dataset for this question is uploaded and renamed here as `data_sneakers.csv`. Please run the notebook and read the annotations to get the answers.
 
 ### Bonus
 Looking more closely at the outliers, it seems like there might be some errors in our dataset. The outliers can be traced back to 2 specific shops and these shops have either...
@@ -51,8 +51,8 @@ FROM   (SELECT LastName as EmployeeOfTheMonth, Max(count) as TopNumberSales
 
 ### Q1.c
 **What product was ordered the most by customers in Germany?**<br>
-NOTE: I'm assuming this is asking for total quantity of product ordered, not total number of orders placed for a product.
-i.e: If there was 1 order of 100 product A, and 10 orders of 1 product B; the query should ouput product A. 
+NOTE: I'm assuming this is asking for total quantity of product ordered, not total number of orders placed for a product.<br>
+i.e: If there is 1 order of 100 of product A, and 10 orders of 1 of product B; the query should output product A as the answer. 
 ```MySQL
 SELECT ProductName as GermanysFavouriteProduct
 FROM   (SELECT ProductName, Max(total_quant) AS TotalProductQuantity
