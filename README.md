@@ -9,13 +9,15 @@ The answers and queries for question 2 are in the text file [here](question2.txt
 #### Q1.a
 **How many orders were shipped by Speedy Express in total?**
 ```MySQL
-SELECT Count(*) as OrderCount
+SELECT Count(*) as SpeedyExpress_OrderCount
 FROM   Shippers as shp
        INNER JOIN Orders O
                ON shp.ShipperID = O.ShipperID
 WHERE  shp.ShipperName = "Speedy Express"
 ```
-output: `54`
+| **SpeedyExpress_OrderCount**  |
+|---|
+|  54 |
 
 #### Q1.b
 **What is the last name of the employee with the most orders?**
@@ -28,13 +30,17 @@ FROM   (SELECT LastName as EmployeeOfTheMonth, Max(count) as TopNumberSales
                          ON Employees.EmployeeID = Orders.EmployeeID
                 GROUP  BY Orders.EmployeeID))  
 ```
-ouput: `Peacock`
+| **EmployeeOfTheMonth**  |
+|---|
+|  Peacock |
 
 #### Q1.c
 **What product was ordered the most by customers in Germany?**
+NOTE: I'm assuming this is asking for total quantity of product ordered, not total number of orders placed for a product.
+i.e: If there was 1 order of 100 product A, and 10 orders of 1 product B; the query should ouput product A. 
 ```MySQL
 SELECT ProductName as GermanysFavouriteProduct
-FROM   (SELECT ProductName, Max(total_quant) AS TotalOrderQuantity
+FROM   (SELECT ProductName, Max(total_quant) AS TotalProductQuantity
         FROM   (SELECT Products.ProductName, Sum(Quantity) AS total_quant
                 FROM   Products
                        INNER JOIN Customers
@@ -46,4 +52,6 @@ FROM   (SELECT ProductName, Max(total_quant) AS TotalOrderQuantity
                 WHERE  Customers.country = "Germany"
                 GROUP  BY Products.ProductID)) 
 ```
-output: `Boston Crab Meat`
+| **GermanysFavouriteProduct**  |
+|---|
+|  Boston Crab Meat |
