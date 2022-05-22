@@ -1,7 +1,4 @@
 # Shopify Data Science Challenge Fall 2022
-
-# Shopify Data Science Challenge Fall 2022
-
 ## Question 1
 - Q1.a) **Think about what could be going wrong with our calculation. Think about a better way to evaluate this data.**<p>
        - At first glance, I imagine that some high-end outliers in our dataset are skewing the AOV.<br>
