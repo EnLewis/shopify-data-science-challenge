@@ -21,13 +21,12 @@ output: `54`
 **What is the last name of the employee with the most orders?**
 ```MySQL
 SELECT EmployeeOfTheMonth
-FROM   (SELECT emp.LastName as EmployeeOfTheMonth,Max(count) as TopNumberSales
-        FROM   Employees as emp
-               JOIN (SELECT Ord.EmployeeID as empID, Count(Ord.EmployeeID) as
-                                                    count
-                     FROM   Orders Ord
-                     GROUP  BY empID)
-                 ON empID = emp.EmployeeID) 
+FROM   (SELECT LastName as EmployeeOfTheMonth, Max(count) as TopNumberSales
+        FROM   (SELECT Employees.LastName, Count(Orders.EmployeeID) as count
+                FROM   Orders
+                       JOIN Employees
+                         ON Employees.EmployeeID = Orders.EmployeeID
+                GROUP  BY Orders.EmployeeID))  
 ```
 ouput: `Peacock`
 
