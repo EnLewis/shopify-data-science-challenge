@@ -35,7 +35,7 @@ FROM   (SELECT LastName as EmployeeOfTheMonth, Max(count) as TopNumberSales
 |  Peacock |
 
 #### Q1.c
-**What product was ordered the most by customers in Germany?**
+**What product was ordered the most by customers in Germany?**<br>
 NOTE: I'm assuming this is asking for total quantity of product ordered, not total number of orders placed for a product.
 i.e: If there was 1 order of 100 product A, and 10 orders of 1 product B; the query should ouput product A. 
 ```MySQL
